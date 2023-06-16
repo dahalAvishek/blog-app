@@ -13,7 +13,17 @@ import Link from "next/link";
 import { AiOutlinePlus } from "react-icons/ai";
 import CategoriesNav from "@/components/CategoriesNav";
 
-export type Blog = {
+export interface Category {
+  id: number;
+  attributes: {
+    Name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
+}
+
+export interface Blog {
   id: number;
   attributes: {
     content: string;
@@ -21,7 +31,6 @@ export type Blog = {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    Categories: string;
     cover: {
       data: {
         id: number;
@@ -84,14 +93,17 @@ export type Blog = {
           url: string;
           previewUrl: string | null;
           provider: string;
-          provider_metadata: any | null;
+          provider_metadata: unknown | null;
           createdAt: string;
           updatedAt: string;
         };
       };
     };
+    categories: {
+      data: Category[];
+    };
   };
-};
+}
 
 // const queryClient = new QueryClient();
 
@@ -118,12 +130,16 @@ function LandingPage() {
   });
 
   const filteredBlogs = activeCategory
-    ? blogs?.filter((blog) =>
+    ? blogs?.filter((blog: Blog) =>
         blog.attributes.categories.data.some(
           (item) => item.attributes.Name === activeCategory
         )
       )
     : blogs;
+
+  // console.log(JSON.stringify(filteredBlogs[0]));
+
+  // console.log(JSON.stringify(blogs[1]));
 
   return status === "loading" ? (
     "Loading..."

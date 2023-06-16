@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { Category } from "@/app/page";
 
 const CategoriesNav = ({
   setActiveCategory,
@@ -18,7 +19,7 @@ const CategoriesNav = ({
       axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories?populate=*`),
   });
 
-  const handleActiveCategory = (category) => {
+  const handleActiveCategory = (category: Category) => {
     console.log("i am here");
     setActiveCategory(category.attributes.Name);
   };
@@ -29,7 +30,7 @@ const CategoriesNav = ({
         <li role="button" onClick={() => setActiveCategory(null)}>
           All
         </li>
-        {categories.map((category) => (
+        {categories.map((category: Category) => (
           <li
             role="button"
             key={category.id}

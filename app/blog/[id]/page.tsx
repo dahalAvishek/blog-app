@@ -19,7 +19,6 @@ export default function Page({ params }: { params: { id: string } }) {
         .then((res) => res.data),
     refetchOnWindowFocus: false,
   });
-  console.log(params);
   return status === "loading" ? (
     "Loading..."
   ) : status === "error" ? (
