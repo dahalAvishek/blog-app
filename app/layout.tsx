@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const lora = Lora({ subsets: ["latin"] });
@@ -20,7 +21,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  console.log(">>>", lora.className);
   return (
     <html lang="en">
       <head>
@@ -31,6 +31,7 @@ export default function RootLayout({
         <QueryClientProvider client={queryClient}>
           {children}
         </QueryClientProvider>
+        <Footer />
       </body>
     </html>
   );

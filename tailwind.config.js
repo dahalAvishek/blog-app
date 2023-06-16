@@ -22,8 +22,12 @@ module.exports = {
     //     '0%, 100%' : {transform: 'translate()'}
     //   }
     // }
-    borderWidth: {
-      "y-1": "1px 0px 1px",
+    // border: {
+    //   "y-1": "1px 0px 1px",
+    //   "t-2": "2px 0px 0px",
+    // },
+    minHeight: {
+      content: "30rem",
     },
   },
   plugins: [],

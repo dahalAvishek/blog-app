@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export default function Page({ params }) {
+export default function Page({ params }: { params: { id: string } }) {
   console.log(params);
   const {
     data: blog,
@@ -19,6 +19,7 @@ export default function Page({ params }) {
         .then((res) => res.data),
     refetchOnWindowFocus: false,
   });
+  console.log(params);
   return status === "loading" ? (
     "Loading..."
   ) : status === "error" ? (
@@ -34,9 +35,8 @@ export default function Page({ params }) {
         >
           <p>{blog.data.attributes.categories.data[0].attributes.Name}</p>
         </div>
-        <article className="px-24">
-          <h1 className="mb-4">Content</h1>
-          <h2>{blog?.data.attributes.title}</h2>
+        <article className="px-24 min-h-content">
+          <h1 className="mb-4">{blog?.data.attributes.title}</h1>
           <p className="max-w-screen-md">
             <ReactMarkdown children={blog?.data.attributes.content} />
           </p>

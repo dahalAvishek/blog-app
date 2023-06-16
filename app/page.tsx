@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import Link from "next/link";
 import { AiOutlinePlus } from "react-icons/ai";
+import CategoriesNav from "@/components/CategoriesNav";
 
 export type Blog = {
   id: number;
@@ -100,6 +101,7 @@ export default function Home() {
 
 function LandingPage() {
   const [activeBgIndex, setActiveBgIndex] = useState<number>(0);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const {
     data: blogs,
@@ -114,6 +116,15 @@ function LandingPage() {
         .then((res) => res.data),
     refetchOnWindowFocus: false,
   });
+
+  const filteredBlogs = activeCategory
+    ? blogs?.filter((blog) =>
+        blog.attributes.categories.data.some(
+          (item) => item.attributes.Name === activeCategory
+        )
+      )
+    : blogs;
+
   return status === "loading" ? (
     "Loading..."
   ) : status === "error" ? (
@@ -125,12 +136,16 @@ function LandingPage() {
         blogs={blogs}
         activeBgIndex={activeBgIndex}
       />
-      <BlogGrid blogs={blogs} />
-      <Link href={`/edit/EditWindow`}>
-        <button>
-          Create New <AiOutlinePlus className="inline" />
-        </button>
-      </Link>
+      <div className="my-0 px-24 py-14">
+        <h1 className="font-semibold mb-12">Popular topics</h1>
+        <CategoriesNav setActiveCategory={setActiveCategory} />
+        <BlogGrid blogs={filteredBlogs} />
+        <Link href="/edit">
+          <button>
+            Create New <AiOutlinePlus className="inline" />
+          </button>
+        </Link>
+      </div>
     </div>
   ) : (
     <div>No blogs found</div>
