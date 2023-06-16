@@ -20,9 +20,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  console.log("lado ", lora.className);
+  console.log(">>>", lora.className);
   return (
     <html lang="en">
+      <head>
+        <meta></meta>
+      </head>
       <body className={lora.className}>
         <NavBar />
         <QueryClientProvider client={queryClient}>

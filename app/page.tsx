@@ -9,6 +9,8 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import axios from "axios";
+import Link from "next/link";
+import { AiOutlinePlus } from "react-icons/ai";
 
 export type Blog = {
   id: number;
@@ -112,7 +114,6 @@ function LandingPage() {
         .then((res) => res.data),
     refetchOnWindowFocus: false,
   });
-  console.log(blogs);
   return status === "loading" ? (
     "Loading..."
   ) : status === "error" ? (
@@ -125,6 +126,11 @@ function LandingPage() {
         activeBgIndex={activeBgIndex}
       />
       <BlogGrid blogs={blogs} />
+      <Link href={`/edit/EditWindow`}>
+        <button>
+          Create New <AiOutlinePlus className="inline" />
+        </button>
+      </Link>
     </div>
   ) : (
     <div>No blogs found</div>
