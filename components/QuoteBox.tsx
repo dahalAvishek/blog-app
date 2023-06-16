@@ -39,7 +39,7 @@ export default function QuoteBox() {
         <div className="mb-4 flex space-x-3 text-md text-neutral-200 ">
           <p>{quote?.author}</p>
           <div className="w-10 h-0.5 mt-3 bg-neutral-200 " />
-          <p className="leading-5">Randi ko choro</p>
+          <p className="leading-5">Author</p>
         </div>
       </div>
     </div>

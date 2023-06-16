@@ -78,7 +78,15 @@ h2 {
 }
 
 body {
+  position: relative;
   color: var(--foreground-rgb);
   background: linear-gradient(to bottom, transparent, var(--background-end-rgb))
     var(--background-start-rgb);
+}
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(10rem, 30rem));
+  gap: 2rem;
+  justify-content: space-between;
 }
