@@ -34,7 +34,7 @@ export default function Page({ params }: { params: { id: string } }) {
         >
           <p>{blog.data.attributes.categories.data[0].attributes.Name}</p>
         </div>
-        <article className="px-24 min-h-content">
+        <article className="px-24">
           <h1 className="mb-4">{blog?.data.attributes.title}</h1>
           <p className="max-w-screen-md">
             <ReactMarkdown children={blog?.data.attributes.content} />

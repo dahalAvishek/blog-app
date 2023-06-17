@@ -28,6 +28,13 @@ module.exports = {
     // },
     minHeight: {
       content: "30rem",
+      vh: "100vh",
+    },
+    gridTemplateRows: {
+      fs: "1fr auto",
+    },
+    maxWidth: {
+      vw: "100vw",
     },
   },
   plugins: [],

@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import "./globals.css";
 import Footer from "@/components/Footer";
+import clsx from "clsx";
 
 const inter = Inter({ subsets: ["latin"] });
 const lora = Lora({ subsets: ["latin"] });
@@ -27,11 +28,13 @@ export default function RootLayout({
         <meta></meta>
       </head>
       <body className={lora.className}>
-        <NavBar />
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
-        <Footer />
+        <div className="min-h-vh grid grid-rows-fs">
+          <NavBar />
+          <QueryClientProvider client={queryClient}>
+            {children}
+          </QueryClientProvider>
+          <Footer />
+        </div>
       </body>
     </html>
   );

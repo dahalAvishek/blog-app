@@ -18,11 +18,12 @@ const ImageQuote = ({ blogs, setActiveBgIndex, activeBgIndex }: Props) => {
       interval={3000}
       showStatus={false}
       showThumbs={false}
+      className="w-screen"
     >
       {blogs.map((blog) => (
         <div
           key={blog.id}
-          className="bg-cover pb-32"
+          className="bg-cover pb-32 w-screen"
           style={{
             backgroundImage: `url(http://localhost:1337${blogs[activeBgIndex]?.attributes.cover.data.attributes.url})`,
           }}
