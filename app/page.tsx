@@ -157,7 +157,7 @@ function LandingPage() {
         <CategoriesNav setActiveCategory={setActiveCategory} />
         <BlogGrid blogs={filteredBlogs} />
         <Link href="/edit">
-          <button>
+          <button className="bg-slate-200">
             Create New <AiOutlinePlus className="inline" />
           </button>
         </Link>
